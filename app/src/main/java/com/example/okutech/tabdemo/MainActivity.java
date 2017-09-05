@@ -1,12 +1,10 @@
 package com.example.okutech.tabdemo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,15 +27,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new OneFragment(), "ONE");
-        adapter.addFrag(new TwoFragment(), "TWO");
-        adapter.addFrag(new ThreeFragment(), "THREE");
-        adapter.addFrag(new FourFragment(), "FOUR");
-        adapter.addFrag(new FiveFragment(), "FIVE");
-        adapter.addFrag(new SixFragment(), "SIX");
-        adapter.addFrag(new SevenFragment(), "SEVEN");
-        adapter.addFrag(new EightFragment(), "EIGHT");
+        List<Fragment> mFragmentList = new ArrayList<>();
+        List<String> mFragmentTitleList = new ArrayList<>();
+        mFragmentList.add(new OneFragment());
+        mFragmentTitleList.add("ONE");
+
+        mFragmentList.add(new TwoFragment());
+        mFragmentTitleList.add("TWO");
+
+        mFragmentList.add(new ThreeFragment());
+        mFragmentTitleList.add("THREE");
+
+        mFragmentList.add(new FourFragment());
+        mFragmentTitleList.add("FOUR");
+
+        mFragmentList.add(new FiveFragment());
+        mFragmentTitleList.add("FIVE");
+
+        mFragmentList.add(new SixFragment());
+        mFragmentTitleList.add("SIX");
+
+        mFragmentList.add(new SevenFragment());
+        mFragmentTitleList.add("SEVEN");
+
+        mFragmentList.add(new EightFragment());
+        mFragmentTitleList.add("EIGHT");
+
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(),
+                mFragmentList, mFragmentTitleList);
         viewPager.setAdapter(adapter);
     }
 }
